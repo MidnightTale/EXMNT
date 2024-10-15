@@ -1,0 +1,4 @@
+name: EXMNT
+version: '1.0-SNAPSHOT'
+main: net.hynse.eXMNT.EXMNT
+api-version: '1.21'
