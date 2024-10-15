@@ -1,0 +1,72 @@
+# EXMNT Plugin Configuration
+# --------------------------
+#
+# This configuration file controls the behavior of the EXMNT plugin,
+# which is designed to detect and respond to the use of specific mods by players.
+
+# General Settings
+# ----------------
+
+# Notify staff when a mod is detected
+# Set to true to enable notifications, false to disable
+notifyStaff: true
+
+# Permission required to receive staff notifications
+# Players with this permission will receive notifications about mod detections
+notificationPermission: "exmnt.notify"
+
+# Mod Detection Configuration
+# ---------------------------
+#
+# This section defines the mods to detect and the actions to take when detected.
+# Each mod entry should follow this structure:
+#
+# mods:
+#   - ModName:
+#       detect:
+#         key: "mod.translation.key"
+#         detectionKey: "unique.detection.string"
+#       punishment:
+#         action: "ACTION_TYPE"
+#         reason: "Reason for punishment" if use BAN KICK
+#         duration: "ban duration (for bans only)"
+#
+# ACTION_TYPE can be one of: NOTICE, KICK, BAN, IGNORE
+# Duration format: "Xd" for days, "Xh" for hours, "Xm" for minutes (e.g., "7d" for 7 days)
+
+mods:
+  - Freecam:
+      detect:
+        key: "key.freecam.toggle"
+        detectionKey: "Toggle Freecam"
+      punishment:
+        action: "KICK"
+        reason: "Freecam is not allowed. Please remove it to continue playing."
+  - Sodium:
+      detect:
+        key: "sodium.option_impact.low"
+        detectionKey: "Low"
+      punishment:
+        action: "NOTICE"
+        reason: "Sodium is allow"
+  - ExampleMod:
+      detect:
+        key: "examplemod.lang.key"
+        detectionKey: "ExampleMod Key"
+      punishment:
+        action: "BAN"
+        reason: "u ban"
+        duration: "7d"
+# You can add more mod entries following the same structure
+
+# Note: The 'key' in the detect section is used for translation purposes,
+# while the 'detectionKey' is the unique string used to identify the mod.
+# Ensure that the 'detectionKey' matches exactly with what your detection method uses.
+
+# The 'action' in the punishment section determines what happens when a mod is detected:
+# - NOTICE: Sends a message to the player and logs the detection
+# - KICK: Kicks the player from the server
+# - BAN: Bans the player for the specified duration
+# - IGNORE: Does nothing (useful for allowed mods that you want to detect but not act upon)
+
+# Remember to reload the plugin or restart the server after making changes to this file.
